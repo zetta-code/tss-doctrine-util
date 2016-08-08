@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2016 Zetta Code
  */
 
-namespace TSS\Bootstrap;
+namespace TSS\DoctrineUtil;
 
 class ConfigProvider
 {
