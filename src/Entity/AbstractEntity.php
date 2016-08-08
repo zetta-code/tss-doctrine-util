@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2016 Zetta Code
  */
 
-namespace TSS\Bootstrap\Entity;
+namespace TSS\DoctrineUtil\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

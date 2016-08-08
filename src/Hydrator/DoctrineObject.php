@@ -4,7 +4,7 @@
  * @copyright Copyright (c) 2016 Zetta Code
  */
 
-namespace TSS\Bootstrap\Hydrator;
+namespace TSS\DoctrineUtil\Hydrator;
 
 class DoctrineObject extends \DoctrineModule\Stdlib\Hydrator\DoctrineObject
 {
