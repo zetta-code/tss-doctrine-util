@@ -6,7 +6,9 @@
 
 namespace TSS\DoctrineUtil;
 
-class ConfigProvider
+use Zend\ModuleManager\Feature\ConfigProviderInterface;
+
+class ConfigProvider implements ConfigProviderInterface
 {
     /**
      * Return configuration for this component.
@@ -15,6 +17,26 @@ class ConfigProvider
      */
     public function __invoke()
     {
-        return [];
+        return $this->getConfig();
+    }
+
+    public function getConfig()
+    {
+        return [
+            'doctrine' => [
+                'driver' => [
+                    'tss_doctrineutil_entities' => [
+                        'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                        'cache' => 'array',
+                        'paths' => [__DIR__ . '/Entity'],
+                    ],
+                    'orm_default' => [
+                        'drivers' => [
+                            'TSS\DoctrineUtil' => 'tss_doctrineutil_entities',
+                        ],
+                    ],
+                ],
+            ],
+        ];
     }
 }
