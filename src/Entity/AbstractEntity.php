@@ -7,6 +7,7 @@
 namespace TSS\DoctrineUtil\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Jenssegers\Date\Date;
 
 /**
  * AbstractEntity
@@ -17,21 +18,21 @@ use Doctrine\ORM\Mapping as ORM;
 abstract class AbstractEntity
 {
     /**
-     * @var \DateTime
+     * @var Date
      *
      * @ORM\Column(name="created_at", type="datetime")
      */
     protected $createdAt;
 
     /**
-     * @var \DateTime
+     * @var Date
      *
      * @ORM\Column(name="updated_at", type="datetime")
      */
     protected $updatedAt;
 
     /**
-     * @return \DateTime
+     * @return Date
      */
     public function getCreatedAt()
     {
@@ -39,15 +40,17 @@ abstract class AbstractEntity
     }
 
     /**
-     * @param \DateTime $createdAt
+     * @param Date $createdAt
+     * @return $this
      */
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
+        return $this;
     }
 
     /**
-     * @return \DateTime
+     * @return Date
      */
     public function getUpdatedAt()
     {
@@ -55,11 +58,13 @@ abstract class AbstractEntity
     }
 
     /**
-     * @param \DateTime $updatedAt
+     * @param Date $updatedAt
+     * @return $this
      */
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
+        return $this;
     }
 
     /**
@@ -67,7 +72,7 @@ abstract class AbstractEntity
      */
     public function createdAt()
     {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = Date::now();
         $this->updatedAt = $this->createdAt;
     }
 
@@ -76,6 +81,6 @@ abstract class AbstractEntity
      */
     public function updateAt()
     {
-        $this->updatedAt = new \DateTime();
+        $this->updatedAt = Date::now();
     }
 }

@@ -6,6 +6,8 @@
 
 namespace TSS\DoctrineUtil\Hydrator;
 
+use Jenssegers\Date\Date;
+
 class DoctrineObject extends \DoctrineModule\Stdlib\Hydrator\DoctrineObject
 {
     /**
@@ -13,7 +15,7 @@ class DoctrineObject extends \DoctrineModule\Stdlib\Hydrator\DoctrineObject
      *
      * @param  mixed $value
      * @param  string $typeOfField
-     * @return \DateTime
+     * @return Date
      */
     protected function handleTypeConversions($value, $typeOfField)
     {
@@ -28,14 +30,10 @@ class DoctrineObject extends \DoctrineModule\Stdlib\Hydrator\DoctrineObject
                 }
 
                 if (is_int($value)) {
-                    $dateTime = new \DateTime();
-                    $dateTime->setTimestamp($value);
-                    $value = $dateTime;
+                    $value = Date::createFromTimestamp($value);
                 } elseif (is_string($value)) {
-                    $timestamp = strtotime(str_replace('/', '-', $value));
-                    $value = new \DateTime(date('Y-m-d h:i:s', $timestamp));
+                    $value = Date::createFromFormat('d/M/Y', $value);
                 }
-
                 break;
             default:
         }
