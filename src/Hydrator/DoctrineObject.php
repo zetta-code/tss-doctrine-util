@@ -32,7 +32,7 @@ class DoctrineObject extends \DoctrineModule\Stdlib\Hydrator\DoctrineObject
                 if (is_int($value)) {
                     $value = Date::createFromTimestamp($value);
                 } elseif (is_string($value)) {
-                    $value = Date::createFromFormat('d/M/Y', $value);
+                    $value = Date::createFromFormat('d/m/Y', $value);
                 }
                 break;
             default:
