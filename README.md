@@ -1,4 +1,4 @@
-# TSS/DoctrineUtil plugin for ZendFramework 3
+# TSS\DoctrineUtil plugin for ZendFramework 3
 
 ## Installation
 
